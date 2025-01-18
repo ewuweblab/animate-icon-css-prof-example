@@ -1,16 +1,102 @@
 /* Diagnostic Styling */
-* {
+/* * {
   outline: 2px dotted gray;
-} 
+}  */
 
-/* temp background color */
-body {
-    background: lightgray;
-}
-  
+/****
+LAYOUT
+****/
 /* vertical and horizontal centering */
 body {
   display: grid;
   place-content: center;
   height: 100vh;
+}
+
+/****
+SVG PARENT
+****/
+/* override SVG defaults */
+svg {
+  fill: gray;
+  stroke: darkgray;
+  stroke-width: 1;
+}
+
+/* make it bigger */
+svg {
+  scale: 10;
+}
+
+/****
+SVG CHILDREN
+****/
+/* 
+* use `fadeIn` for each side
+* see keyframe animation below -- see below
+*/
+#north,
+#east,
+#south,
+#west {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  /* keep last keyframe visible   */
+  animation-fill-mode: backwards;
+}
+
+/* delay East by 1 seconds */
+#north {
+  animation-delay: 1s;
+}
+
+/* delay East by 2 seconds */
+#east {
+  animation-delay: 2s;
+}
+
+/* delay East by 3 seconds */
+#south {
+  animation-delay: 3s;
+}
+
+/* delay East by 4 seconds */
+#west {
+  animation-delay: 4s;
+}
+
+/* 
+* transiton on `:hover`
+*/
+#north:hover,
+#east:hover,
+#south:hover,
+#west:hover {
+  fill: deeppink;
+}
+
+/* 
+tranisiton a transform on `:active`
+*/
+#north:active,
+#east:active,
+#south:active,
+#west:active {
+  transition: translate 1s;
+  translate: 0 -2px;
+}
+
+/****
+KEYFRAME ANIMATION
+****/
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
